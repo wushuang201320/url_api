@@ -1,0 +1,21 @@
+server:
+  port: 8090
+
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: 192.168.31.48:8090
+    ip-address: 192.168.31.48 #可访问的ip地址
+  client:
+    service-url:
+      defaultZone: http://localhost:8080/eureka
+
+spring:
+  application:
+    name: springcloud-zuul
+
+zuul:
+  routes:
+    order-serviceId: wushuang
+    path: /user/**
+    service-id: springcloud-provider

@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: springcloudconfig-server
+  profiles:
+    active: native
+
+
+
+
+
+
+clientParam: native-test-1.0

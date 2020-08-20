@@ -1,0 +1,55 @@
+#声明端口
+server:
+  port: 8081
+
+spring:
+  http:
+    encoding:
+      force: true
+      charset: UTF-8
+      enabled: true
+
+  application:
+    #声明项目名称
+    name: springcloud-provider
+  #mysql的配置
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.31.48:3306/wushuang?serverTimezone=GMT%2B8&characterEncoding=UTF-8&useSSL=false
+    username: root
+    password: 123456
+#  redis:
+#    host: localhost
+#    port: 6379
+#    database: 2
+#    lettuce:
+#      pool:
+#        max-active: 8
+
+
+#声明向服务器注册地址
+eureka:
+  instance:
+    prefer-ip-address: true #注册使用ip
+    instance-id: 192.168.31.48:8081
+    ip-address: 192.168.31.48 #可访问的ip地址
+    status-page-url-path: /actuator/info
+    lease-renewal-interval-in-seconds: 30 #每隔几秒告诉eureka服务器我还存活，用于心跳检测
+    lease-expiration-duration-in-seconds: 90 #如果心跳检测一直没有发送，10秒后会从eureka服务器中将此服务剔除
+  client:
+    service-url:
+      defaultZone: http://localhost:8080/eureka
+      fetch-registry: true
+      register-with-eureka: true
+      healthcheck:
+        enabled: true
+      registry-fetch-interval-seconds: 5 #表示eureka client间隔多久去拉取服务注册信息，默认30秒。
+      instance-info-replication-interval-seconds: 10 #更新实例信息的变化到Eureka服务端的间隔时间，默认30秒。
+
+
+
+logging:
+  level:
+    com.mapper: debug
+
+

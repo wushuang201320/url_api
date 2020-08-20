@@ -1,0 +1,19 @@
+#设置端口号
+server:
+  port: 8080
+
+
+eureka:
+  instance:
+    #设置项目名称是localhost，也可以是其它的。
+    hostname: localhost
+  client:
+    #标注改服务不去注册服务（当只有一个Eureka的时候，设置成false,否则项目项目启动报错）
+    register-with-eureka: false
+    #标注改服务不去注册服务（当只有一个Eureka的时候，设置成false,否则项目项目启动报错）
+    fetch-registry: false
+    service-url:
+      defaultZone:
+        http: //${eureka.instance.hostname}:${server.port}/eureka
+  server:
+    enable-self-preservation: false

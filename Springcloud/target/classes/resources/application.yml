@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: springcloudconfig-server
+  profiles:
+    active: native
+
+
+
+server:
+  port: 9090
+
+
